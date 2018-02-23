@@ -1,0 +1,9 @@
+<h3><b>Name:</b> <%= @manager.name %> </h3>
+<h3><b>Title:</b> <%= @manager.title %> </h3>
+<br>
+<h3><b>Current Projects:</b></h3>
+<ul>
+  <% @manager.projects.each do |project| %>
+    <li> <a href="/projects/<%=project.id%>"><%= project.description %></a> </li>
+  <% end %>
+</ul>
