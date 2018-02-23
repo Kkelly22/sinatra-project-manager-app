@@ -13,4 +13,14 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
+######## Helper Methods ##############
+  helpers do
+    def logged_in?
+      !!session[:project_manager_id]
+    end
+
+    def current_user
+      ProjectManager.find(session[:project_manager_id])
+    end
+  end
 end
