@@ -1,0 +1,11 @@
+<h2>Edit Project</h2>
+
+<form method="POST" action="/projects/<%=@project.id%>">
+  <input type="hidden" id="hidden" name ="_method" value="patch" >
+  <input type="text" value="<%= @project.description %>" placeholder="<%= @project.description %>" name="description">
+  <input type="text" value="<%= @project.priority %>" placeholder="<%= @project.priority %>" name="priority">
+  <input type="text" value="<%= @project.budget %>" placeholder="<%= @project.budget %>" name="budget">
+  <input type="submit" value="Update Project">
+</form>
+<br>
+<a href="/projects/<%=@project.id%>/delete">Delete Project</a>

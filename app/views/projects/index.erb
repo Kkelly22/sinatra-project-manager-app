@@ -1,0 +1,6 @@
+<h3><b>Current Projects:</b></h3>
+<ul>
+  <% @projects.each do |project| %>
+    <li> <a href="/projects/<%=project.id%>"><%= project.description %></a> </li>
+  <% end %>
+</ul>
