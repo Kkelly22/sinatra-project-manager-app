@@ -9,3 +9,8 @@ an account and keep track of Projects they are managing.
 
 A Project Manager has many Projects
 A Project Belongs to a Project Manager
+
+To use, run the following in order:
+1) "bundle install"
+2) "rake db:migrate"
+3) shotgun to start the server
