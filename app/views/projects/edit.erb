@@ -6,9 +6,11 @@
 
 <form method="POST" action="/projects/<%=@project.id%>">
   <input type="hidden" id="hidden" name ="_method" value="patch" >
-  <input type="text" value="<%= @project.description %>" placeholder="<%= @project.description %>" name="description">
-  <input type="text" value="<%= @project.priority %>" placeholder="<%= @project.priority %>" name="priority">
-  <input type="text" value="<%= @project.budget %>" placeholder="<%= @project.budget %>" name="budget">
+  <input type="text" value="<%= @project.project_number %>" placeholder="<%= @project.project_number %>" name="project_number">
+  <input type="text" value="<%= @project.project_name %>" placeholder="<%= @project.project_name %>" name="project_name">
+  <input type="text" value="<%= @project.delivery_date %>" placeholder="<%= @project.delivery_date %>" name="delivery_date">
+  <input type="text" value="<%= @project.budget_remaining %>" placeholder="<%= @project.budget_remaining %>" name="budget_remaining">
+  <input type="text" value="<%= @project.status %>" placeholder="<%= @project.status %>" name="status">
   <input type="submit" value="Update Project">
 </form>
 <br>

@@ -2,9 +2,11 @@
   <%= flash[:message] %>
 <% end %>
 
-<p><b>Description:</b> <%= @project.description %> </p>
-<p><b>Priority:</b> <%= @project.priority %> </p>
-<p><b>Budget:</b> <%= @project.budget %> </p>
+<p><b>Project Number:</b> <%= @project.project_number %> </p>
+<p><b>Project Name:</b> <%= @project.project_name %> </p>
+<p><b>Delivery Date:</b> <%= @project.delivery_date %> </p>
+<p><b>Budget Remaining:</b> <%= @project.budget_remaining %> </p>
+<p><b>Status:</b> <%= @project.status %> </p>
 <br>
 <a href="/projects/<%=@project.id%>/edit">Edit Project</a>
 <br>
