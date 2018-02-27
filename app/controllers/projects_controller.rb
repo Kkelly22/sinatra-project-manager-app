@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
       if params[:content] == ""
         redirect '/projects/new'
       else
-        @project = Project.new(:description => params[:description], :priority => params[:priority], :budget => params[:budget])
+        @project = Project.new(:project_number => params[:project_number], :project_name => params[:project_name], :delivery_date => params[:delivery_date], :budget_remaining => params[:budget_remaining], :status => params[:status])
         @project.save
         if @project.save
           flash[:message] = "Successfully created project."
@@ -68,9 +68,11 @@ class ProjectsController < ApplicationController
         redirect "/projects/#{params[:id]}/edit"
       else
         @project = Project.find_by_id(params[:id])
-        @project.description = params[:description]
-        @project.priority = params[:priority]
-        @project.budget = params[:budget]
+        @project.project_number = params[:project_number]
+        @project.project_name = params[:project_name]
+        @project.delivery_date = params[:delivery_date]
+        @project.budget_remaining = params[:budget_remaining]
+        @project.status = params[:status]
         @project.save
         if @project.save
           flash[:message] = "Successfully updated project."
