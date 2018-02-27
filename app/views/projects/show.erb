@@ -1,3 +1,7 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <p><b>Description:</b> <%= @project.description %> </p>
 <p><b>Priority:</b> <%= @project.priority %> </p>
 <p><b>Budget:</b> <%= @project.budget %> </p>
