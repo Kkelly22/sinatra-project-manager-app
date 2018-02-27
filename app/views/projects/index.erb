@@ -1,6 +1,41 @@
-<h3><b>Current Projects:</b></h3>
-<ul>
-  <% @projects.each do |project| %>
-    <li> <a href="/projects/<%=project.id%>"><%= project.project_name %></a> </li>
-  <% end %>
-</ul>
+<!doctype HTML>
+
+<head>
+  <style>
+    table {
+      width: 75%;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+</body>
+  <h3><b>Current Projects:</b></h3>
+
+  <table >
+    <tr>
+      <th>Project Number</th>
+      <th>Project Name</th>
+      <th>Delivery Date</th>
+      <th>Budget Remaining</th>
+      <th>Status</th>
+      <th>Manager ID</th>
+      <th>Client ID</th>
+    </tr>
+
+    <% @projects.each do |project| %>
+      <tr>
+        <td> <a href="/projects/<%=project.id%>"><%= project.project_number %></a> </td>
+        <td> <%= project.project_name %> </td>
+        <td> <%= project.delivery_date %> </td>
+        <td> <%= project.budget_remaining %> </td>
+        <td> <%= project.status %> </td>
+        <td> <%= ProjectManager.find_by_id(project.project_manager_id).name %> </td>
+        <td> <%= Client.find_by_id(project.client_id).name %> </td>
+      </tr>
+    <% end %>
+  </table>
+
+</body>
