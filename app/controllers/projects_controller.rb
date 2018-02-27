@@ -27,6 +27,7 @@ class ProjectsController < ApplicationController
       else
         @project = Project.new(:project_number => params[:project_number], :project_name => params[:project_name], :delivery_date => params[:delivery_date], :budget_remaining => params[:budget_remaining], :status => params[:status])
         @project.save
+        @project.project_manager = current_user
         if @project.save
           flash[:message] = "Successfully created project."
           redirect "/projects/#{@project.id}"
