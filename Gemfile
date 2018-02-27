@@ -12,6 +12,7 @@ gem 'pry'
 gem 'bcrypt'
 gem "tux"
 gem 'rack_session_access'
+gem 'rack-flash3'
 
 
 group :test do
