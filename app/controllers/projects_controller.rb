@@ -1,4 +1,7 @@
+require 'rack-flash'
 class ProjectsController < ApplicationController
+  enable :sessions
+  use Rack::Flash
 
   get '/projects' do
     if logged_in?
@@ -25,8 +28,10 @@ class ProjectsController < ApplicationController
         @project = Project.new(:description => params[:description], :priority => params[:priority], :budget => params[:budget])
         @project.save
         if @project.save
+          flash[:message] = "Successfully created project."
           redirect "/projects/#{@project.id}"
         else
+          flash[:message] = "There was an error creating the project, please try again."
           redirect '/projects/new'
         end
       end
@@ -68,8 +73,10 @@ class ProjectsController < ApplicationController
         @project.budget = params[:budget]
         @project.save
         if @project.save
+          flash[:message] = "Successfully updated project."
           redirect "/projects/#{params[:id]}"
         else
+          flash[:message] = "There was an error updating the project, please try again."
           redirect "/projects/#{params[:id]}/edit"
         end
       end
@@ -83,8 +90,10 @@ class ProjectsController < ApplicationController
       @project = Project.find_by_id(params[:id])
       if @project && @project.project_manager = current_user
         @project.delete
+        flash[:message] = "Project successfully deleted."
         redirect '/projects'
       else
+        flash[:message] = "There was an error deleting the project, please try again."
         redirect "/projects/#{params[:id]}"
       end
     else
