@@ -58,4 +58,42 @@ class ClientsController < ApplicationController
     end
   end
 
+  post '/clients/:id' do
+    if logged_in?
+      if params[:content] == ""
+        redirect "/clients/#{params[:id]}/edit"
+      else
+        @client = Client.find_by_id(params[:id])
+        @client.name = params[:name]
+        @client.save
+        if @client.save
+          flash[:message] = "Successfully updated client."
+          redirect "/clients/#{params[:id]}"
+        else
+          flash[:message] = "There was an error updating the client, please try again."
+          redirect "/projects/#{params[:id]}/edit"
+        end
+      end
+    else
+      redirect '/login'
+    end
+  end
+
+  get '/clients/:id/delete' do
+    if logged_in?
+      @client = Client.find_by_id(params[:id])
+      if @client
+        @client.delete
+        flash[:message] = "Client successfully deleted."
+        redirect '/clients'
+      else
+        flash[:message] = "There was an error deleting the client, please try again."
+        redirect "/clients/#{params[:id]}"
+      end
+    else
+      redirect '/login'
+    end
+  end
+
+
 end
