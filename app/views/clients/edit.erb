@@ -1,0 +1,13 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+<h2>Edit Client</h2>
+
+<form method="POST" action="/clients/<%=@client.id%>">
+  <input type="hidden" id="hidden" name ="_method" value="patch" >
+  <input type="text" value="<%= @client.name %>" placeholder="<%= @client.name %>" name="name">
+  <input type="submit" value="Update Client">
+</form>
+<br>
+<a href="/clients/<%=@client.id%>/delete">Delete Client</a>

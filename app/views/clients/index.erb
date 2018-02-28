@@ -1,0 +1,29 @@
+<!doctype HTML>
+
+<head>
+  <style>
+    table {
+      width: 75%;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+</body>
+  <h3><b>Current Clients:</b></h3>
+
+  <table >
+    <tr>
+      <th>Client Name</th>
+    </tr>
+
+    <% @clients.each do |client| %>
+      <tr>
+        <td> <a href="/clients/<%=clients.id%>"><%= client.name %></a> </td>
+      </tr>
+    <% end %>
+  </table>
+
+</body>
