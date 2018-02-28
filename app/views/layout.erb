@@ -10,8 +10,11 @@
       <% if logged_in? %>
 
         <a href="/projects/new"> Create Project </a>
+        <a href="/clients/new"> Create Client </a>
         <a href="/logout"> Log Out </a>
         <a href="/projects"> See All Projects </a>
+        <a href="/clients"> See All Clients </a>
+
         <h2>Welcome, <%=current_user.username %></h2>
 
       <% else %>
