@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180222021929) do
+ActiveRecord::Schema.define(version: 20180227011801) do
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "project_managers", force: :cascade do |t|
     t.string "username"
@@ -20,10 +24,13 @@ ActiveRecord::Schema.define(version: 20180222021929) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "description"
-    t.string "priority"
-    t.integer "budget"
+    t.integer "project_number"
+    t.string "project_name"
+    t.integer "delivery_date"
+    t.integer "budget_remaining"
+    t.string "status"
     t.integer "project_manager_id"
+    t.integer "client_id"
   end
 
 end
