@@ -58,7 +58,7 @@ class ClientsController < ApplicationController
     end
   end
 
-  post '/clients/:id' do
+  patch '/clients/:id' do
     if logged_in?
       if params[:content] == ""
         redirect "/clients/#{params[:id]}/edit"
@@ -94,6 +94,5 @@ class ClientsController < ApplicationController
       redirect '/login'
     end
   end
-
 
 end
