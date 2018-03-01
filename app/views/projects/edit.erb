@@ -1,7 +1,3 @@
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
-
 <h2>Edit Project</h2>
 
 <form method="POST" action="/projects/<%=@project.id%>">
@@ -12,6 +8,14 @@
   <input type="text" value="<%= @project.budget_remaining %>" placeholder="<%= @project.budget_remaining %>" name="budget_remaining">
   <input type="text" value="<%= @project.status %>" placeholder="<%= @project.status %>" name="status">
   <input type="submit" value="Update Project">
+
+  <% Clients.all.each do |client|%>
+    <input type="checkbox" name="project[client_id]" id="<%=client.id%>" value="<%=client.id%>" <%='checked' if client.id == @project.client.id%> ><%= client.name %></input>
+  <%end %>
+  <br>
+  <% ProjectManagers.all.each do |pm|%>
+    <input type="checkbox" name="project[project_manager_id]" id="<%=pm.id%>" value="<%=pm.id%>" <%='checked' if pm.id == @project.project_manager.id%> ><%= pm.name %></input>
+  <%end %>
 </form>
 <br>
 <a href="/projects/<%=@project.id%>/delete">Delete Project</a>
