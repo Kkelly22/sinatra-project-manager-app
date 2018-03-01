@@ -9,11 +9,14 @@
   <input type="text" value="<%= @project.status %>" placeholder="<%= @project.status %>" name="status">
   <input type="submit" value="Update Project">
 
-  <% Clients.all.each do |client|%>
+  <br>
+  <br>
+  <% Client.all.each do |client|%>
     <input type="checkbox" name="project[client_id]" id="<%=client.id%>" value="<%=client.id%>" <%='checked' if client.id == @project.client.id%> ><%= client.name %></input>
   <%end %>
   <br>
-  <% ProjectManagers.all.each do |pm|%>
+  <br>
+  <% ProjectManager.all.each do |pm|%>
     <input type="checkbox" name="project[project_manager_id]" id="<%=pm.id%>" value="<%=pm.id%>" <%='checked' if pm.id == @project.project_manager.id%> ><%= pm.name %></input>
   <%end %>
 </form>

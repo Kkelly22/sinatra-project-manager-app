@@ -84,6 +84,17 @@ class ProjectsController < ApplicationController
         @project.delivery_date = params[:delivery_date]
         @project.budget_remaining = params[:budget_remaining]
         @project.status = params[:status]
+
+        @client = Client.find_by_id(params[:project][:client_id])
+        if @client
+          @project.client = @client
+        end
+
+        @project_manager = ProjectManager.find_by_id(params[:project][:project_manager_id])
+        if @project_manager
+          @project.project_manager = @project_manager
+        end
+
         @project.save
         if @project.save
           flash[:message] = "Successfully updated project."
