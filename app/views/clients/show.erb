@@ -1,3 +1,7 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <h3><b>Name:</b> <%= @client.name %> </h3>
 <br>
 <h3><b>Current Projects:</b></h3>
