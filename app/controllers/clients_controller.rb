@@ -71,7 +71,7 @@ class ClientsController < ApplicationController
           redirect "/clients/#{params[:id]}"
         else
           flash[:message] = "There was an error updating the client, please try again."
-          redirect "/projects/#{params[:id]}/edit"
+          redirect "/projects/#{params[:id]}"
         end
       end
     else
