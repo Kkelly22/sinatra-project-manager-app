@@ -1,6 +1,6 @@
 class ProjectManagersController < ApplicationController
 
-  get 'project_managers/:slug' do
+  get '/project_managers/:slug' do
     @manager = ProjectManager.find_by_slug(params[:slug])
     erb :'project_managers/show'
   end
