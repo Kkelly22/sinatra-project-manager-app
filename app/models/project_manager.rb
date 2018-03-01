@@ -7,6 +7,6 @@ class ProjectManager < ActiveRecord::Base
   end
 
   def self.find_by_slug(slug)
-    ProjectManager.all.find{|pm| pm.slug == slug}
+    ProjectManager.all.find{|pm| pm.slug == slug.downcase.gsub(" ","-")}
   end
 end
