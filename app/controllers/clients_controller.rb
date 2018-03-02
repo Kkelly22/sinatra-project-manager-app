@@ -83,7 +83,8 @@ class ClientsController < ApplicationController
     if logged_in?
       @client = Client.find_by_id(params[:id])
       if @client
-        @client.delete
+        @client.destroy
+
         flash[:message] = "Client successfully deleted."
         redirect '/clients'
       else
