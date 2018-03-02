@@ -1,5 +1,5 @@
 class Client < ActiveRecord::Base
-  has_many :projects
+  has_many :projects, dependent: :destroy
 
   def slug
     name.downcase.gsub(" ","-")
