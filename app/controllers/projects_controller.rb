@@ -27,13 +27,13 @@ class ProjectsController < ApplicationController
       else
         @project = Project.new(:project_number => params[:project_number], :project_name => params[:project_name], :delivery_date => params[:delivery_date], :budget_remaining => params[:budget_remaining], :status => params[:status])
 
-        @client = Client.find_by_id(params[:project][:client_id])
-        if @client
+        if params[:project]
+          @client = Client.find_by_id(params[:project][:client_id])
           @project.client = @client
         end
 
-        @project_manager = ProjectManager.find_by_id(params[:project][:project_manager_id])
-        if @project_manager
+        if params[:project]
+          @project_manager = ProjectManager.find_by_id(params[:project][:project_manager_id])
           @project.project_manager = @project_manager
         end
 
@@ -85,13 +85,13 @@ class ProjectsController < ApplicationController
         @project.budget_remaining = params[:budget_remaining]
         @project.status = params[:status]
 
-        @client = Client.find_by_id(params[:project][:client_id])
-        if @client
+        if params[:project]
+          @client = Client.find_by_id(params[:project][:client_id])
           @project.client = @client
         end
 
-        @project_manager = ProjectManager.find_by_id(params[:project][:project_manager_id])
-        if @project_manager
+        if params[:project]
+          @project_manager = ProjectManager.find_by_id(params[:project][:project_manager_id])
           @project.project_manager = @project_manager
         end
 
