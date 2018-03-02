@@ -15,12 +15,12 @@
   <br>
   <br>
   <% Client.all.each do |client|%>
-    <input type="checkbox" name="project[client_id]" id="<%=client.id%>" value="<%=client.id%>"  ><%= client.name %></input>
+    <input type="radio" name="project[client_id]" id="<%=client.id%>" value="<%=client.id%>"  ><%= client.name %></input>
   <%end %>
   <br>
   <br>
   <% ProjectManager.all.each do |pm|%>
-    <input type="checkbox" name="project[project_manager_id]" id="<%=pm.id%>" value="<%=pm.id%>"  ><%= pm.name %></input>
+    <input type="radio" name="project[project_manager_id]" id="<%=pm.id%>" value="<%=pm.id%>"  ><%= pm.name %></input>
   <%end %>
 
 </form>
